@@ -1,158 +1,171 @@
-<!DOCTYPE html>
-<html ng-app>
-  <head>
-    <meta charset="utf-8">
-    <title>{{ greeting }} World</title>
-  </head>
-    <body>
+  <!DOCTYPE html>
+  <html ng-app>
+    <head>
+      <meta charset="utf-8">
+      <title>{{ greeting }} World</title>
 
-<div ng-controller="mainController">
+      <link rel="stylesheet" type="text/css" href="css/main.css">
 
-<!-- produces an answer to the <h1> tag -->
-<input type="text" ng-model="name" placeholder="What is your name?">
-<!-- gets the answer to this from  <ng-model="name">  -->
-<h1>My name is: {{ name }}</h1>
-<hr>
+    </head>
+      <body>
 
+        <h1>Intro to Angular 9/6/15 (Week 10)</h1>
+        <br>
 
-<!-- places the answer on the DOM -->
-<p>{{1 + 6}}<p>
-<hr>
+          <!-- First exercise using ng-model. Notice how I set ng-model to "greeting." This binds the value to the property called "greeting". -->
+          <p>Say something to the world:  <input type="text" ng-model="greeting" ng-init="greeting='Hello, '"></p>
+          <p>{{ greeting }} world!</p>
+          <hr>
 
 
 
-<!-- asks for the users name and places the answer  on the DOM -->
-<p>Say something to the world <input type="text" ng-model="greeting" ng-init="greeting='Hello, '"></p>
-<p>{{ greeting }} world!</p>
-<br>
-<hr>
-
-
-<!-- places a drop-down menu asking the following information -->
-<h2>Do you like dogs or cats better? Please choose below.</h2>
-<h3>You chose: {{ favorite.Animal }}</h3>
-<select name="singleSelect" ng-model="favorite.Animal">
-        <option value="Dogs">Dogs</option>
-        <option value="Cats">Cats</option>
-        <option value="Dogs and Cats">Dogs and Cats</option>
-        <option value="Neither">Neither</option>
-</select>
-<br>
-<br>
-<hr>
-
-
-<!-- various samples of code -->
-<p><span>1 + 2 = {{1 + 2}}</span> <br>
-<span>My name is {{"BoJack" + " Horseman"}}</span>  <br>
-<span>The array [99,43,22] is {{ [99,43,22].length }} items long</span> <br>
-<span>{{3.14159265359 | currency: "&euro;"}}</span></p> <br>
-<hr>
-
-
-<br>
-<!-- entered text returns a) all lowercase and b) all uppercase -->
-<input type="text" ng-model="whisperYell" ng-maxlength="20" placeholder="Enter your text here?">
-<h3>The whisper response is: {{ whisperYell | lowercase }}</h3>
-<h3>The YELL response is: {{ whisperYell | uppercase }}</h3>
-<hr>
+      <!-- Simple code for example purposes.  -->
+      <p>Examples of various bits of code:</p>
+      <p>1 + 6 = {{1 + 6}}<p>
+      <p>7 x 2 = {{7 * 2}}</p>
+      <p>The array [99,43,22] is {{ [99,43,22].length }} items long</p>
+      <p>{{3.14159265359 | currency: "&euro;"}}</p>
+      <hr>
 
 
 
-<!-- rounds to x number of places -->
-<p><span>{{3.14159265359 | number:3}}</span><br>
-<span>{{3.14159265359 | number:6}}</span>  <br>
-<span>{{3.14159265359 | number:1}}</span></p>  <br>
-<hr>
+      <!-- Binding the value of "name" to the property "name" -->
+      <p>Please enter your name:</p>
+      <input type="text" ng-model="name"placeholder="What is your name?">
+
+      <h4>My name is: {{name}}</h4>
+      <hr>
 
 
 
-<!-- dropdown asking the user how many digits to round pi to -->
-<h4>How many digits of pi do you want?</h4>
-<select ng-model="pi">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-</select>
-<h3>{{3.14159265359 | number:pi }}</h3>
-
-
-<ng-pluralize count="pi"
-    when="{'1': 'The first digit of pi.',
-    'other' : 'The first {} digits of pi.'}">
-</ng-pluralize>
-<hr>
-
-
-<!-- Simple tip calculator -->
-<h4>Tip Calculator</h4>
-<p>How much did your meal cost?</p>
-<input type="number" ng-model="mealCost" placeholder="Meal amount">
-<p>How much do you want to tip?</p>
-<select name="mealTip" ng-model="tip">
-        <option value=".1">10%</option>
-        <option value=".15">15%</option>
-        <option value=".2">20%</option>
-</select>
- <h5>Subtotal: {{ mealCost | currency  }}</h5>
- <h5>Tip amount is: {{ mealCost * tip  | currency }}</h5>
- <h5>The total amount owed is: {{ (tip * 100) + mealCost | currency }}</h5>
-<hr>
-
-
-<h2>EXERCISE
-
-With one single expression, prove that the context angular expressions run is not the window object. What is it instead?</h2>
-<hr>
-
-<h4> Please fill out the following</h4>
-
-
-<!-- Mad Libs -->
-<input type="text" ng-model="mLibsBoysName" placeholder="Enter a boy's name . . ."> <br>
-
-<input type="text" ng-model="mLibsAdjective" placeholder="Enter an adjective . . ."> <br>
-
-<input type="text" ng-model="mLibsPluralNoun1" placeholder="Enter a plural noun . . . "> <br>
-
-<input type="text" ng-model="mLibsInsect" placeholder="Enter an insect, plural . . ."> <br>
-
-<input type="text" ng-model="mLibsPluralNoun2" placeholder="Enter a plural noun . . . "> <br>
-
-<input type="text" ng-model="mLibsVerb" width = "200px" placeholder="Enter a verb ending in 's' . . .">
-
-<h4>Mad with the Libs</h4>
-<p>I'm in love with {{ mLibsBoysName }}. He's so {{ mLibsAdjective }}! He has big flat {{ mLibsPluralNoun1 }}, and when our {{ mLibsInsect }} meet, I get {{ mLibsPluralNoun2 }} in my stomach. I've fallen for him like a ton of {{ mLibsVerb }}, and he shuffles for me too. But I think he's got another girlfriend. What should I do?</p>
-<hr>
-
-<div ng-app="myApp" ng-controller="myCtrl">
-
-$scope.names = ["Harry", "Ron", "Hermione", "Sirius", "Hedwig", "Tonks"];
-
-<ul>
-  <li ng-repeat="name in names">
-    {{name}}
-   </li>
-</ul>
+      <!-- Places a drop-down menu asking the following information. Binds the value "favoriteAnimal" to the property "favorite.Animal".  -->
+      <h4>Do you like dogs or cats better? Please choose below.</h4>
+      <h5>You chose: {{ favorite.Animal }}</h5>
+      <select name="singleSelect" ng-model="favorite.Animal">
+              <option value="Dogs">Dogs</option>
+              <option value="Cats">Cats</option>
+              <option value="Dogs and Cats">Dogs and Cats</option>
+              <option value="Neither">Neither</option>
+      </select>
+      <br><br>
+      <hr>
 
 
 
+      <!-- Entered text returns a) all lowercase and b) all uppercase. Binds the value "whisperYell" to the property "whisperYell". -->
+      <input type="text" ng-model="whisperYell" ng-maxlength="20" placeholder="Enter your text here?">
+      <h4>The whisper response is: {{ whisperYell | lowercase }}</h4>
+      <h3>The YELL response is: {{ whisperYell | uppercase }}</h3>
+      <hr>
 
 
+      <!-- Rounds to x number of places -->
+      <p>An example of rounding:</p>
+      <p>{{3.14159265359 | number:3}}<br></p>
+      <p>{{3.14159265359 | number:6}}<br></p>
+      <p>{{3.14159265359 | number:1}}</p>
+      <hr>
 
 
+      <!-- Dropdown menu asking the user how many digits to round pi to -->
+      <h4>How many digits of pi do you want?</h4>
+      <select ng-model="pi">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+      </select>
+      <h3>{{3.14159265359 | number:pi }}</h3>
+
+      <ng-pluralize count="pi"
+          when="{'1': 'The first digit of pi.',
+          'other' : 'The first {} digits of pi.'}">
+      </ng-pluralize>
+      <hr>
 
 
+      <!-- Tip calculator. Binds the value "mealCost" to the property "mealCost" -->
+      <h4>Tip Calculator</h4>
+      <p>How much did your meal cost?</p>
+      <input type="number" ng-model="mealCost" placeholder="Meal amount">
+      <p>How much do you want to tip?</p>
+      <select name="mealTip" ng-model="tip">
+              <option value=".1">10%</option>
+              <option value=".15">15%</option>
+              <option value=".2">20%</option>
+      </select>
+       <h5>Subtotal: {{ mealCost | currency  }}</h5>
+       <h5>Tip amount is: {{ mealCost * tip  | currency }}</h5>
+       <h5>The total amount owed is: {{ (tip * 100) + mealCost | currency }}</h5>
+      <hr>
 
+
+      <!-- Mad Libs: Version One. Each line is bound with the value and property. -->
+      <h4> Please fill out the following:</h4>
+
+      <input type="text" ng-model="mLibsBoysName" placeholder="Enter a boy's name . . ."> <br>
+
+      <input type="text" ng-model="mLibsAdjective" placeholder="Enter an adjective . . ."> <br>
+
+      <input type="text" ng-model="mLibsPluralNoun1" placeholder="Enter a plural noun . . . "> <br>
+
+      <input type="text" ng-model="mLibsInsect" placeholder="Enter an insect, plural . . ."> <br>
+
+      <input type="text" ng-model="mLibsPluralNoun2" placeholder="Enter a plural noun . . . "> <br>
+
+      <input type="text" ng-model="mLibsVerb" width = "200px" placeholder="Enter a verb ending in 's' . . .">
+
+      <h4>Mad with the Libs</h4>
+      <p>I'm in love with {{ mLibsBoysName }}. He's so {{ mLibsAdjective }}! He has big flat {{ mLibsPluralNoun1 }}, and when our {{ mLibsInsect }} meet, I get {{ mLibsPluralNoun2 }} in my stomach. I've fallen for him like a ton of {{ mLibsVerb }}, and he shuffles for me too. But I think he's got another girlfriend. What should I do?</p>
+      <hr>
+
+
+      <!-- Mad Libs: Version Two. This shows a different layout. -->
+      <h4>Please fill out the following:</h4>
+
+      <h4>Boy's Name
+      <input type="text" ng-model="mLBoyName">
+      </h4>
+      <h4>Adjective (discriptive word)
+      <input type="text" ng-model="mLAdjective">
+      </h4>
+      <h4>Plural noun (person, place, or thing)
+      <input type="text" ng-model="mLPluralNoun1">
+      </h4>
+      <h4>An insect, plural
+      <input type="text" ng-model="mLInsectPlural">
+      </h4>
+      <h4>Plural noun (person, place, or thing)
+      <input type="text" ng-model="mLPluralNoun2">
+      </h4>
+      <h4 >A verb ending in 's' (action word)
+      <input type="text" ng-model="mLVerb">
+      </h4>
+
+      <h4>Mad with The libs</h4>
+      <p>I'm in love with {{ mLBoyName }}.</p> He's so {{ mLAdjective }}!
+      He has big flat {{ mLPluralNoun1 }}, and when our {{ mLInsectPlural }} meet, I get
+      {{ mLPluralNoun2 }} in my stomach. I've fallen for him like a ton of {{ mLVerb }},
+      and he shuffles for me, too.</p>
+      <p>But I think he's got another girlfriend. What should I do?</p>
+      <hr>
+
+
+<div ng-controller="MyFirstController">
+      <h4>My name is: {{name}}</h4>
+      <input ng-model="name" type="text" placeholder="What is your name?">
+    </div>
 
 
 
 
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.min.js"></script>
-
-  </body>
+<script type="text/javascript" src="app.js"></script>
+    </body>
 </html>
+
+
+
