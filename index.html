@@ -1,40 +1,44 @@
   <!DOCTYPE html>
-  <html ng-app>
+  <html ng-app = 'myApp'>
     <head>
       <meta charset="utf-8">
       <title>{{ greeting }} World</title>
 
-      <link rel="stylesheet" type="text/css" href="css/main.css">
-
+      <link rel="stylesheet" type="text/css" href="main.css">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     </head>
       <body>
+
+        <div class = 'container'>
 
         <h1>Intro to Angular 9/6/15 (Week 10)</h1>
         <br>
 
           <!-- First exercise using ng-model. Notice how I set ng-model to "greeting." This binds the value to the property called "greeting". -->
-          <p>Say something to the world:  <input type="text" ng-model="greeting" ng-init="greeting='Hello, '"></p>
+          <h4>Say something to the world:</h4>
+          <input type="text" ng-model="greeting" ng-init="greeting=" "">
           <p>{{ greeting }} world!</p>
-          <hr>
+<hr>
 
 
 
       <!-- Simple code for example purposes.  -->
-      <p>Examples of various bits of code:</p>
+      <h4>Examples of various bits of code:</h4>
       <p>1 + 6 = {{1 + 6}}<p>
       <p>7 x 2 = {{7 * 2}}</p>
       <p>The array [99,43,22] is {{ [99,43,22].length }} items long</p>
       <p>{{3.14159265359 | currency: "&euro;"}}</p>
-      <hr>
+      <p>My name is {{ "Bojack" + " Horseman" }}</p>
+<hr>
 
 
 
       <!-- Binding the value of "name" to the property "name" -->
-      <p>Please enter your name:</p>
+      <h4>Please enter your name:</h4>
       <input type="text" ng-model="name"placeholder="What is your name?">
 
-      <h4>My name is: {{name}}</h4>
-      <hr>
+      <h4>Hello, {{name}}.</h4>
+<hr>
 
 
 
@@ -48,23 +52,24 @@
               <option value="Neither">Neither</option>
       </select>
       <br><br>
-      <hr>
+<hr>
 
 
 
       <!-- Entered text returns a) all lowercase and b) all uppercase. Binds the value "whisperYell" to the property "whisperYell". -->
-      <input type="text" ng-model="whisperYell" ng-maxlength="20" placeholder="Enter your text here?">
-      <h4>The whisper response is: {{ whisperYell | lowercase }}</h4>
-      <h3>The YELL response is: {{ whisperYell | uppercase }}</h3>
-      <hr>
+      <h4>Say something below.</h4>
+      <input type="text" ng-model="whisperYell" ng-maxlength="20" placeholder="Enter your text here">
+      <h5>The whisper response is: {{ whisperYell | lowercase }}</h5>
+      <h4>The YELL response is: {{ whisperYell | uppercase }}</h4>
+<hr>
 
 
       <!-- Rounds to x number of places -->
-      <p>An example of rounding:</p>
+      <h4>An example of rounding:</h4>
       <p>{{3.14159265359 | number:3}}<br></p>
       <p>{{3.14159265359 | number:6}}<br></p>
       <p>{{3.14159265359 | number:1}}</p>
-      <hr>
+<hr>
 
 
       <!-- Dropdown menu asking the user how many digits to round pi to -->
@@ -83,27 +88,32 @@
           when="{'1': 'The first digit of pi.',
           'other' : 'The first {} digits of pi.'}">
       </ng-pluralize>
-      <hr>
+<hr>
 
 
-      <!-- Tip calculator. Binds the value "mealCost" to the property "mealCost" -->
+      <!-- Tip calculator. Binds the value "mealPrice" to the property "mealPrice" -->
       <h4>Tip Calculator</h4>
-      <p>How much did your meal cost?</p>
-      <input type="number" ng-model="mealCost" placeholder="Meal amount">
-      <p>How much do you want to tip?</p>
-      <select name="mealTip" ng-model="tip">
-              <option value=".1">10%</option>
-              <option value=".15">15%</option>
-              <option value=".2">20%</option>
+      <p>How much did your meal cost? <input type="number" ng-model="mealPrice" placeholder="Meal amount">
+      </p>
+
+      <p>How much do you want to tip?
+      <select ng-model="tip">
+          <option value=".1">10%</option>
+          <option value=".15">15%</option>
+          <option value=".2">20%</option>
+      </p>
       </select>
-       <h5>Subtotal: {{ mealCost | currency  }}</h5>
-       <h5>Tip amount is: {{ mealCost * tip  | currency }}</h5>
-       <h5>The total amount owed is: {{ (tip * 100) + mealCost | currency }}</h5>
-      <hr>
+
+       <h5>Subtotal: {{ mealPrice | currency  }}</h5>
+       <h5>Tip amount is: {{ mealPrice * tip  | currency }}</h5>
+       <h5>The total amount owed is: {{ tip + mealPrice | currency }}</h5>
+<hr>
+
 
 
       <!-- Mad Libs: Version One. Each line is bound with the value and property. -->
-      <h4> Please fill out the following:</h4>
+      <h3>Mad Libs #1</h3>
+      <h4> Let's play MadLibs. Please fill out the boxes below:</h4>
 
       <input type="text" ng-model="mLibsBoysName" placeholder="Enter a boy's name . . ."> <br>
 
@@ -119,30 +129,35 @@
 
       <h4>Mad with the Libs</h4>
       <p>I'm in love with {{ mLibsBoysName }}. He's so {{ mLibsAdjective }}! He has big flat {{ mLibsPluralNoun1 }}, and when our {{ mLibsInsect }} meet, I get {{ mLibsPluralNoun2 }} in my stomach. I've fallen for him like a ton of {{ mLibsVerb }}, and he shuffles for me too. But I think he's got another girlfriend. What should I do?</p>
-      <hr>
+<hr>
+
 
 
       <!-- Mad Libs: Version Two. This shows a different layout. -->
+      <h3>Mad Libs #2</h3>
       <h4>Please fill out the following:</h4>
-
+      <form>
+      <div class = "form-group">
       <h4>Boy's Name
-      <input type="text" ng-model="mLBoyName">
+        <input type="text" ng-model="mLBoyName">
+      </div>
       </h4>
-      <h4>Adjective (discriptive word)
-      <input type="text" ng-model="mLAdjective">
+      <h4>Adjective
+        <input type="text" ng-model="mLAdjective">
       </h4>
-      <h4>Plural noun (person, place, or thing)
-      <input type="text" ng-model="mLPluralNoun1">
+      <h4>Plural noun
+        <input type="text" ng-model="mLPluralNoun1">
       </h4>
       <h4>An insect, plural
-      <input type="text" ng-model="mLInsectPlural">
+        <input type="text" ng-model="mLInsectPlural">
       </h4>
-      <h4>Plural noun (person, place, or thing)
-      <input type="text" ng-model="mLPluralNoun2">
+      <h4>Plural noun
+        <input type="text" ng-model="mLPluralNoun2">
       </h4>
-      <h4 >A verb ending in 's' (action word)
-      <input type="text" ng-model="mLVerb">
+      <h4 >A verb ending in 's'
+        <input type="text" ng-model="mLVerb">
       </h4>
+      </form>
 
       <h4>Mad with The libs</h4>
       <p>I'm in love with {{ mLBoyName }}.</p> He's so {{ mLAdjective }}!
@@ -150,20 +165,89 @@
       {{ mLPluralNoun2 }} in my stomach. I've fallen for him like a ton of {{ mLVerb }},
       and he shuffles for me, too.</p>
       <p>But I think he's got another girlfriend. What should I do?</p>
-      <hr>
+<hr>
 
 
-<div ng-controller="MyFirstController">
-      <h4>My name is: {{name}}</h4>
-      <input ng-model="name" type="text" placeholder="What is your name?">
-    </div>
+
+<!-- Mad Libs. Version Three. This uses a form to collect the answers. -->
+      <h3>Mad Libs #3</h3>
+      <h4>Let's play MadLibs</h4>
+      <form>
+          <div class="form-group">
+            <label for="Name">Boy's Name</label>
+            <input type="text" class="form-control" ng-model = 'madlibsName' placeholder="Name">
+          </div>
+          <div class="form-group">
+            <label for="Adjective">Adjective</label>
+            <input type="text" class="form-control" ng-model = 'madlibsAdjective' placeholder="Adjective (discriptive word)">
+          </div>
+          <div class="form-group">
+            <label for="Plural Noun">Plural Noun</label>
+            <input type="text" class="form-control" ng-model = 'madlibsPluralNoun1' placeholder="Plural Noun (person, place, or thing)">
+          </div>
+          <div class="form-group">
+            <label for="An Animal">An Insect (Plural)</label>
+            <input type="text" class="form-control" ng-model = 'madlibsInsect' placeholder="Insect">
+          </div>
+          <div class="form-group">
+            <label for="Plural Noun">Plural Noun</label>
+            <input type="text" class="form-control" ng-model = 'madlibsPluralNoun2' placeholder="Plural Noun  (person, place, or thing)">
+          </div>
+          <div class="form-group">
+            <label for="Verb">A verb Ending in 's'</label>
+            <input type="text" class="form-control" ng-model = 'madlibsVerb' placeholder="A Verb ending in S  (action word)">
+          </div>
+      </form>
+
+      <h4>Mad with The libs</h4>
+            <p>I'm in love with {{ madlibsName }}.
+            He's so {{ madlibsAdjective }}!
+            He has big flat {{ madlibsPluralNoun1 }}, and when our {{ madlibsInsect }} meet, I get
+            {{ madlibsPluralNoun2 }} in my stomach. I've fallen for him like a ton of {{ madlibsVerb }},
+            and he shuffles for me, too.</p>
+            <p>But I think he's got another girlfriend. What should I do?
+            </p>
+<hr>
+
+
+
+      <!-- mainController grabs the necessary informatin from the main.js file -->
+      <!-- Performs action based on the Harry Potter names -->
+      <div ng-controller = 'mainController'>
+
+        <h4>Repeat on li with name in ul</h4>
+          <ul>
+            <li  ng-repeat = 'name in names'>
+              {{ name }}
+            </li>
+          </ul>
+
+        <!-- outputs the same information, except this time the names are in an li as opposed to a ul as in above -->
+        <h4>Repeat on ul with name in li</h4>
+          <ul ng-repeat = 'name in names'>
+            <li>{{ name }}</li>
+          </ul>
+<hr>
+
+          <!-- outputs card suits from main.js -->
+          <h4>Card Names</h4>
+          <ul>
+            <li ng-repeat = 'symbol in symbols' ng-bind-html = 'symbol'>
+            {{ symbol }}
+            </li>
+          </ul>
+<hr>
+
+          <!-- I need to try and get the card symbols to output -->
+
+
 
 
 
 
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.min.js"></script>
-<script type="text/javascript" src="app.js"></script>
+<script type="text/javascript" src="main.js"></script>
     </body>
 </html>
 
