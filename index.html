@@ -106,7 +106,7 @@
 
        <h5>Subtotal: {{ mealPrice | currency  }}</h5>
        <h5>Tip amount is: {{ mealPrice * tip  | currency }}</h5>
-       <h5>The total amount owed is: {{ tip + mealPrice | currency }}</h5>
+       <h5>The total amount owed is: {{ (tip + mealPrice) * 100 | currency }}</h5>
 <hr>
 
 
