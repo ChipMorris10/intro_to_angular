@@ -214,7 +214,6 @@
       <!-- mainController grabs the necessary informatin from the main.js file -->
       <!-- Performs action based on the Harry Potter names -->
       <div ng-controller = 'mainController'>
-
         <h4>Repeat on li with name in ul</h4>
           <ul>
             <li  ng-repeat = 'name in names'>
@@ -222,14 +221,14 @@
             </li>
           </ul>
 
-        <!-- outputs the same information, except this time the names are in an li as opposed to a ul as in above -->
+        <!-- Outputs the same information, except this time the names are in an li as opposed to a ul as in above -->
         <h4>Repeat on ul with name in li</h4>
           <ul ng-repeat = 'name in names'>
             <li>{{ name }}</li>
           </ul>
 <hr>
 
-          <!-- outputs card suits from main.js -->
+          <!-- Outputs card suits from main.js -->
           <h4>Card Names</h4>
           <ul>
             <li ng-repeat = 'symbol in symbols' ng-bind-html = 'symbol'>
@@ -237,9 +236,73 @@
             </li>
           </ul>
 <hr>
+          <!-- ****************************************************** -->
 
-          <!-- I need to try and get the card symbols to output -->
+          <!-- I need to try to get the card symbols to output     -->
 
+          <!-- ****************************************************** -->
+
+
+      <!-- array with duplicate numbers -->
+      <ul ng-controller="mainController">
+        <li ng-repeat="duplicate in [1,1,2,5,6,9,9,9] track by $index">
+            {{ duplicate }}
+        </li>
+      </ul>
+<hr>
+
+
+      <!-- The element is hidden when the expression provided to ng-show attribute is false. ng-hide will hide an element when the expression given to ng-hide is true -->
+
+      <!-- This is a little confusing at first.  -->
+      <!-- ng-show is hidden if the expression is false
+                 Or, ng-show is displayed if the condition is true -->
+      <!-- ng-hide is hidden, if the expression is true
+                  Or, ng-hide is displayed if the expression is false -->
+      <!-- Angular adds class="ng-hide" to hide code -->
+      <h4>Showing the use of ng-show and ng-hide</h4>
+        <div ng-show="3 + 4 == 5">
+          3 + 4 isn't 5, don't show
+        </div>
+
+        <div ng-show="3 + 4 == 7">
+          3 + 4 is 7, do show
+        </div>
+
+        <div ng-hide="3 + 4 == 5">
+            3 + 4 isn't 5, don't hide
+        </div>
+
+        <div ng-hide="3 + 4 == 7">
+          3 + 4 is 7, do hide
+        </div>
+
+        <div ng-show="1 + 1 !== 3">
+          1 + 1 is 2, do show
+        </div>
+
+        <div ng-hide="2 + 3 == 6">
+          2 + 3 isn't 6, don't show
+        </div>
+<hr>
+
+      <!-- Password validator. -->
+
+      <!-- NEED TO FIX THE LAST LINE -->
+      <h4>Password Validator</h4>
+      <h5>Password must be at least 6 characters long</h5>
+        <p>Enter your password here:  <input type="password" ng-model="security"  placeholder="Enter password" ng-class="{valid: security.lengh >= 6}">You've entered {{ security.length }} characters.</p>
+
+        <button ng-hide="security.length < 6" class="btn btn-success" >Your password has been accepted</button>
+        <!-- <p> ng-show="security.length < 6" >Password is invalid!</p> -->
+        </p>
+
+
+
+
+
+
+<hr>
 
 
 
