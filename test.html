@@ -1,0 +1,32 @@
+  <!DOCTYPE html>
+  <html ng-app = 'myApp'>
+    <head>
+      <meta charset="utf-8">
+      <link rel="stylesheet" type="text/css" href="main.css">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    </head>
+      <body>
+
+          <div ng-controller="mainController">
+
+              <!-- Outputs card suits from main.js -->
+              <h4>Card Names</h4>
+
+              <ul>
+                <li ng-repeat = "symbol in symbols" ng-bind-html = "symbol">{{symbol}}</li>
+              </ul>
+
+            </div>
+
+
+          <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+          <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.min.js"></script>
+          <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular-sanitize.js"></script>
+          <!-- angular module -->
+          <script type="text/javascript" src="main.js"></script>
+    </body>
+</html>
+
+
+

@@ -11,9 +11,10 @@ Three common complaints of using Angular?
 - Two-way binding - your html template can include variables and your page auto updates when the variables change
 - Extending HTML - turning a static webpage into a dynamic one
 - Once you use it on a document, you’re locked-in. In other words, because of the specific jargon, there’s no way to abstract it; it will have to be rewritten if you switch to a different tool.
-- With Angular you have to design your webpage from the ground up. In other words, with jQuery you can think of wha you want to do to a page during the work. With Angular you have to think about this before you design your page.
+- With Angular you have to design your webpage from the ground up. In other words, with jQuery you can think of what you want to do to a page during the work. With Angular you have to think about this before you design your page.
 
 Is Angular a MVC (Model View Controller) framework?
+Yes.
 https://github.com/gSchool/angular-curriculum/blob/master/Unit-1/02-angular-mvc.md
 Model
 It’s where your application’s data lives, representing the current state.
@@ -24,7 +25,7 @@ It displays your application’s data (from the model) for the end user and hand
 (Legos: the final product is the view.)
 
 Controller (often called the view-model)
-Control the relationship between the Models and Views by exposing parts of the model and managing state.
+Controls the relationship between the Models and Views by exposing parts of the model and managing state.
 (Legos: the builder is the controller. He’s responsible for grabbing all the necessary building blocks and ordering them as necessary.)
 
 For a simple breakdown of the terms, see https://realpython.com/blog/python/the-model-view-controller-mvc-paradigm-summarized-with-legos/
